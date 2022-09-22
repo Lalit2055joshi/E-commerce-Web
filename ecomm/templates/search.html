@@ -24,12 +24,10 @@
                         <div class="product-view-top">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <form action="/serach" method="get">
-                                        <div class="product-search">
-                                            <input name="query" type="text" placeholder="">
-                                            <button type="submit"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </form>
+                                    <div class="product-search">
+                                        <input type="email" value="Search">
+                                        <button><i class="fa fa-search"></i></button>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="product-short">
@@ -68,7 +66,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        {% for product in cat_product %}
+                        {% for product in search_product %}
                         <div class="product-item">
                             <div class="product-title">
                                 <a href="/details/{{product.slug}}">{{product.name}}</a>
