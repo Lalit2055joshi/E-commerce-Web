@@ -113,11 +113,20 @@ def login(request):
     if request.method == 'POST':
         username=request.POST["username"]
         password = request.POST["password"]
-        user = auth.autenticate(username = username , password = password )
+        user = auth.authenticate(username = username , password = password )
         if user is not NONE:
             auth.login(request,user)
             return redirect('/')
         else:
             messages.error(request,'The User Name Or Password does not match')
             return redirect('/login')    
-    return render(request,'login.html')        
+    return render(request,'login.html')         
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+def add_to_cart(request,slug):
+    username=request.user.username
+    if Cart.objects.filter(slug = slug,username= username,checkout = False).exists():
+        
